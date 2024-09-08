@@ -1,5 +1,5 @@
 local oldreq = require
-local require = function(s) return oldreq('Naccache_Stern_Lua.Naccache-Stern-Knapsack-Cryptography-Lua.' .. s) end
+local require = function(s) return oldreq('Naccache_Stern_Lua.Naccache-Stern-Knapsack-Cryptography-Lua.functions.' .. s) end
 local NSK = require("NSKalgo")
 local dicts = require("dictionary")
 
