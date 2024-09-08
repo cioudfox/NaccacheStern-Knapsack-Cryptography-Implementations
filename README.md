@@ -1,9 +1,11 @@
 # Naccache-Stern Knapsack Cryptography Lua
-Lua program from Naccache-Stern Knapsack
+Lua program from Naccache-Stern Knapsack Cryptosystem first created in 1997 by David Naccache and Jacques Stern.
 https://en.wikipedia.org/wiki/Naccache–Stern_knapsack_cryptosystem
 
-Simulates the encryption and decryption of the Naccache-Stern Knapsack problem. 
+## Description
+Knapsack problem that uses modular exponentiation to make an difficult to solve Knapsack problem with non super increasing sets.
+Simulates the encryption and decryption of the Naccache-Stern Knapsack problem on a random ascii string
 
-Video:
+## Video Simulation:
+https://github.com/user-attachments/assets/80d5fe5b-8364-45bb-a5d5-927c71224e33
 
-https://github.com/user-attachments/assets/d57b3763-5e49-4d8e-95b5-74b74c0e592b
