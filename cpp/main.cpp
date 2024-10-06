@@ -5,7 +5,7 @@
 #include "dictionary.h"
 
 int main() {
-    long long int p = 8191;  // Select some Mersennes Prime/Perfect Prime Value
+    long long int p = 9999971;  // Select some Mersennes Prime/Perfect Prime Value
 
     std::cout << "\nGenerating the Secret Key" << std::endl;
     int s = NSKalgo::secretkey(p);
@@ -16,9 +16,10 @@ int main() {
     std::cout << "\nPublic Key Table: " << NSKalgo::dump(pubk) << std::endl << std::endl;
 
     std::cout << "\nEnter message to encrypt: ";
-    std::cout << "\nEncrypting the Message" << std::endl;
     std::string input;
     std::getline(std::cin, input);
+    
+    std::cout << "\nEncrypting the Message" << std::endl;
 
     // Translate message to decimal form
     std::vector<long long int> mess = Dictionary::asctodec(input);
