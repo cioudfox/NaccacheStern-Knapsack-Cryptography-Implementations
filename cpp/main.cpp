@@ -5,47 +5,40 @@
 #include "dictionary.h"
 
 int main() {
-    int p = 74207281;  // Select some Mersennes Prime/Perfect Prime Value
+    long long int p = 9999971;  // Select some Mersennes Prime/Perfect Prime Value
 
-    std::cout<< "--------------------------------------------------------------------------------------------------------" << endl;
-    std::cout<< "Generate the Secret Key" << endl;
-    std::cout<< "--------------------------------------------------------------------------------------------------------" << endl;
+    std::cout << "\nGenerating the Secret Key" << std::endl;
     int s = NSKalgo::secretkey(p);
-    std::cout << "Generated SECRET KEY: " << s << std::endl;
+    std::cout << "\nGenerated SECRET KEY: " << s << std::endl;
 
-    std::cout<< "--------------------------------------------------------------------------------------------------------" << endl;
-    std::cout<< "Generate the Public Key" << endl;
-    std::cout<< "--------------------------------------------------------------------------------------------------------" << endl;
-    std::vector<int> pubk = NSKalgo::publickey(p, s);
-    std::cout << "Public Key Table: " << NSKalgo::dump(pubk) << std::endl << std::endl;
+    std::cout << "\nGenerate the Public Key" << std::endl;
+    std::vector<long long int> pubk = NSKalgo::publickey(p, s);
+    std::cout << "\nPublic Key Table: " << NSKalgo::dump(pubk) << std::endl << std::endl;
 
-    std::cout<< "--------------------------------------------------------------------------------------------------------" << endl;
-    std::cout<< "Encrypting the Message" << endl;
-    std::cout<< "--------------------------------------------------------------------------------------------------------" << endl;
-    std::cout << "Enter message to encrypt: ";
+    std::cout << "\nEnter message to encrypt: ";
     std::string input;
     std::getline(std::cin, input);
+    
+    std::cout << "\nEncrypting the Message" << std::endl;
 
     // Translate message to decimal form
-    std::vector<int> mess = Dictionary::asctodec(input);
+    std::vector<long long int> mess = Dictionary::asctodec(input);
 
     // Create the Encrypted Message (Cipher)
-    std::vector<int> cipher = NSKalgo::encrypt(mess, pubk, p);
+    std::vector<long long int> cipher = NSKalgo::encrypt(mess, pubk, p);
 
     // Cipher difficult to solve by knapsack problem
-    std::cout << "Cipher Message: " << NSKalgo::dump(cipher) << std::endl << std::endl;
+    std::cout << "\nCipher Message: " << NSKalgo::dump(cipher) << std::endl << std::endl;
 
-    std::cout<< "--------------------------------------------------------------------------------------------------------" << endl;
-    std::cout<< "Decrypting the Mesage" << endl;
-    std::cout<< "--------------------------------------------------------------------------------------------------------" << endl;
-    std::cout << "Enter Secret Key to decrypt: ";
-    int seckey;
+    std::cout << "\nDecrypting the Mesage" << std::endl;
+    std::cout << "\nEnter Secret Key to decrypt: ";
+    long long int seckey;
     std::cin >> seckey;
 
-    std::vector<int> decryptedMessage = NSKalgo::decrypt(cipher, p, seckey);
+    std::vector<long long int> decryptedMessage = NSKalgo::decrypt(cipher, p, seckey);
     std::string decryptedAsciiMessage = Dictionary::dectoasc(decryptedMessage);
 
-    std::cout << "Decrypted Message: " << decryptedAsciiMessage << std::endl << std::endl;
+    std::cout << "\nDecrypted Message: " << decryptedAsciiMessage << std::endl << std::endl;
 
     return 0;
 }

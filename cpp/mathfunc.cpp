@@ -1,22 +1,23 @@
 #include "mathfunc.h"
-#include <algorithm>  // For std::gcd in C++17 and higher
 #include <vector>
 #include <cmath>  // For std::floor
 
 // Function to calculate GCD using the Euclid algorithm
-int MathFunc::gcd(int a, int b) {
-    // We can use the standard library's gcd function in C++17
-    return std::gcd(a, b);
+long long int MathFunc::itemgcd(long long int a, long long int b) {
+    if (b == 0) {
+        return a;
+    } else {
+        return itemgcd(b, a % b);
+    }
 }
-
 // Function to calculate the modular inverse
-int MathFunc::invmod(int a, int m) {
-    int m0 = m, x0 = 0, x1 = 1;
+long long int MathFunc::invmod(long long int a, long long int m) {
+    long long int m0 = m, x0 = 0, x1 = 1;
     if (m == 1) return 0;
 
     while (a > 1) {
-        int q = a / m;
-        int t = m;
+        long long int q = a / m;
+        long long int t = m;
 
         m = a % m;
         a = t;
@@ -34,14 +35,14 @@ int MathFunc::invmod(int a, int m) {
 }
 
 // Extended GCD algorithm
-int MathFunc::ext_gcd(int a, int b, int& x, int& y) {
+long long int MathFunc::ext_gcd(long long int a, long long int b, long long int& x, long long int& y) {
     if (b == 0) {
         x = 1;
         y = 0;
         return a;
     } else {
-        int x1, y1;
-        int gcd = ext_gcd(b, a % b, x1, y1);
+        long long int x1, y1;
+        long long int gcd = ext_gcd(b, a % b, x1, y1);
         x = y1;
         y = x1 - (a / b) * y1;
         return gcd;
@@ -49,10 +50,10 @@ int MathFunc::ext_gcd(int a, int b, int& x, int& y) {
 }
 
 // Modular exponentiation
-int MathFunc::mod_exp(int a, int exp, int mod) {
+long long int MathFunc::mod_exp(long long int a, long long int exp, long long int mod) {
     if (mod == 1) return 0;
 
-    int result = 1;
+    long long int result = 1;
     a = a % mod;
     while (exp > 0) {
         if (exp % 2 == 1) {
@@ -65,8 +66,8 @@ int MathFunc::mod_exp(int a, int exp, int mod) {
 }
 
 // Convert integer to binary array (8 bits)
-std::vector<int> MathFunc::intToBinArr(int num) {
-    std::vector<int> binaryArray(8, 0);
+std::vector<long long int> MathFunc::intToBinArr(long long int num) {
+    std::vector<long long int> binaryArray(8, 0);
     for (int i = 0; i < 8; ++i) {
         binaryArray[i] = num % 2;
         num = num / 2;

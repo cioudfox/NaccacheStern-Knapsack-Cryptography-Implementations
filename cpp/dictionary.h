@@ -7,10 +7,10 @@
 class Dictionary {
 public:
     // Function to convert ASCII string to decimal array
-    static std::vector<int> asctodec(const std::string& str);
+    static std::vector<long long int> asctodec(const std::string& str);
 
     // Function to convert decimal array back to ASCII string
-    static std::string dectoasc(const std::vector<int>& decarr);
+    static std::string dectoasc(const std::vector<long long int>& decarr);
 };
 
 #endif
