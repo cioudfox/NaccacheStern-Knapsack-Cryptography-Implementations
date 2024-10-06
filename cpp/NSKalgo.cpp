@@ -67,7 +67,7 @@ std::vector<long long int> NSKalgo::decrypt(const std::vector<long long int>& ci
 }
 
 // Dump function for utility (for printing vectors in C++)
-std::string NSKalgo::dump(const std::vector<int>& vec) {
+std::string NSKalgo::dump(const std::vector<long long int>& vec) {
     std::string result = "{ ";
     for (const auto& val : vec) {
         result += std::to_string(val) + ", ";
