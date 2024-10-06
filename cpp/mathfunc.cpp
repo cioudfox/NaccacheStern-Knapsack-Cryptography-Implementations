@@ -1,14 +1,15 @@
 #include "mathfunc.h"
-#include <algorithm>  // For std::gcd in C++17 and higher
 #include <vector>
 #include <cmath>  // For std::floor
 
 // Function to calculate GCD using the Euclid algorithm
-int MathFunc::gcd(int a, int b) {
-    // We can use the standard library's gcd function in C++17
-    return std::gcd(a, b);
+int MathFunc::itemgcd(int a, int b) {
+    if (b == 0) {
+        return a;
+    } else {
+        return itemgcd(b, a % b);
+    }
 }
-
 // Function to calculate the modular inverse
 int MathFunc::invmod(int a, int m) {
     int m0 = m, x0 = 0, x1 = 1;

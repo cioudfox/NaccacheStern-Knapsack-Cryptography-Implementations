@@ -10,7 +10,7 @@ static const std::vector<int> pval = {2, 3, 5, 7, 11, 13, 17, 19};
 // Secret key generation (finds secret key 's' such that GCD(s, p-1) = 1)
 int NSKalgo::secretkey(int p) {
     int s = std::rand() % (p - 1);  // Random between 0 and p-1
-    while (MathFunc::gcd(p - 1, s) != 1) {
+    while (MathFunc::itemgcd(p - 1, s) != 1) {
         s = (s + 1) % p;
     }
     return s;
@@ -57,7 +57,7 @@ std::vector<int> NSKalgo::decrypt(const std::vector<int>& cipher, int p, int s) 
         for (size_t j = 0; j < pval.size(); ++j) {
             int term1 = MathFunc::mod_exp(2, j, p);
             int term2 = MathFunc::invmod(pval[j] - 1, p);
-            int term3 = MathFunc::gcd(pval[j], MathFunc::mod_exp(cipher[i], s, p)) - 1;
+            int term3 = MathFunc::itemgcd(pval[j], MathFunc::mod_exp(cipher[i], s, p)) - 1;
             val = (val + ((term1 * term2) % p) * term3) % p;
         }
         decipher[i] = val;

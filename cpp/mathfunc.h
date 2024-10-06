@@ -6,7 +6,7 @@
 class MathFunc {
 public:
     // Function to calculate GCD using Euclid's algorithm
-    static int gcd(int a, int b);
+    static int itemgcd(int a, int b);
 
     // Function to calculate modular inverse
     static int invmod(int a, int m);
